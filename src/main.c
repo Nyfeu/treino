@@ -73,7 +73,7 @@ uint read_uint() {
 
   char buffer[MAX_STRING_READ];
   read_string(buffer);
-  return strtod(buffer, NULL, 10);
+  return strtol(buffer, NULL, 10);
 
 }
 
@@ -95,7 +95,7 @@ void getConnection(const char* db_path, sqlite3** db) {
 
   if (sqlite3_open(db_path, db) != SQLITE_OK) {
 
-    printf("Erro na conexao... %s\n\n", sqlite3_errmsg(db));
+    printf("Erro na conexao... %s\n\n", sqlite3_errmsg(*db));
     exit(-1);
 
   }
